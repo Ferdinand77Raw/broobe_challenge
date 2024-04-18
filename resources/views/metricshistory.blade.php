@@ -20,6 +20,7 @@
             <th>Best Practices Metric</th>
             <th>SEO Metric</th>
             <th>PWA Metric</th>
+            <th>Created at</th>
         </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
             <td>{{ empty($metric->best_practices_metric) ? 'No Data' : $metric->best_practices_metric }}</td>
             <td>{{ empty($metric->seo_metric) ? 'No Data' : $metric->seo_metric }}</td>
             <td>{{ empty($metric->pwa_metric) ? 'No Data' : $metric->pwa_metric }}</td>
+            <td>{{ empty($metric->created_at) ? 'No Data' : $metric->created_at }}</td>
         </tr>
             @endforeach
         </tbody>

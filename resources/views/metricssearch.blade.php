@@ -18,7 +18,7 @@
             
                 <!-- Grupo de checkboxes para las categorías -->
                 <div class="mb-3">
-                    <label class="form-label">Categorías:</label><br>
+                    <label class="form-label">Categories:</label><br>
                     @foreach($categories as $categoria)
                         <input type="checkbox" id="categoria_{{ $categoria->id }}" name="category[]" value="{{ $categoria->id }}" class="form-check-input">
                         <label for="categoria_{{ $categoria->id }}" class="form-check-label">{{ $categoria->name }}</label><br>
@@ -27,7 +27,7 @@
             
                 <!-- Select para la estrategia -->
                 <div class="mb-3">
-                    <label for="estrategia" class="form-label">Estrategia:</label>
+                    <label for="estrategia" class="form-label">Strategies:</label>
                     <select id="strategies" name="strategy" class="form-select" required>
                         @foreach($strategies as $estrategia)
                             <option value="{{ $estrategia->id }}">{{ $estrategia->name }}</option>
@@ -39,45 +39,94 @@
                     <button class="btn btn-primary" id="getMetricsBtn" type="submit" disabled>Get metrics</button>
                 </div>
                            
-                <div id="resultados-container" class="d-flex justify-content-between">
-                <div class="metric-box" id="url-box">
-        <h4>URL</h4>
-        <p class="metric-score"></p>
-        <div class="sk-chase" style="display: none;"><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div></div>
+    <!-- Contenedor de resultados -->
+    <div id="resultados-container" class="d-flex justify-content-between mt-5">
+        <!-- URL -->
+        <div class="metric-box" id="url-box">
+            <h5>URL</h5>
+            <p class="metric-score"></p>
+            <div class="sk-chase" style="display: none;">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
+        <!-- ACCESSIBILITY -->
+        <div class="metric-box" id="accessibility-box">
+            <h5>ACCESSIBILITY</h5>
+            <p class="metric-score"></p>
+            <div class="sk-chase" style="display: none;">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
+        <!-- BEST PRACTICES -->
+        <div class="metric-box" id="best-practices-box">
+            <h5>BEST PRACTICES</h5>
+            <p class="metric-score"></p>
+            <div class="sk-chase" style="display: none;">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
+        <!-- PERFORMANCE -->
+        <div class="metric-box" id="performance-box">
+            <h5>PERFORMANCE</h5>
+            <p class="metric-score"></p>
+            <div class="sk-chase" style="display: none;">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
+        <!-- PWA -->
+        <div class="metric-box" id="pwa-box">
+            <h5>PWA</h5>
+            <p class="metric-score"></p>
+            <div class="sk-chase" style="display: none;">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
+        <!-- SEO -->
+        <div class="metric-box" id="seo-box">
+            <h5>SEO</h5>
+            <p class="metric-score"></p>
+            <div class="sk-chase" style="display: none;">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
     </div>
-    <div class="metric-box" id="accessibility-box">
-        <h4>ACCESSIBILITY</h4>
-        <p class="metric-score"></p>
-        <div class="sk-chase" style="display: none;"><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div></div>
-    </div>
-    <div class="metric-box" id="best-practices-box">
-        <h4>BEST PRACTICES</h4>
-        <p class="metric-score"></p>
-        <div class="sk-chase" style="display: none;"><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div></div>
-    </div>
-    <div class="metric-box" id="performance-box">
-        <h4>PERFORMANCE</h4>
-        <p class="metric-score"></p>
-        <div class="sk-chase" style="display: none;"><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div></div>
-    </div>
-    <div class="metric-box" id="pwa-box">
-        <h4>PWA</h4>
-        <p class="metric-score"></p>
-        <div class="sk-chase" style="display: none;"><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div></div>
-    </div>
-    <div class="metric-box" id="seo-box">
-        <h4>SEO</h4>
-        <p class="metric-score"></p>
-        <div class="sk-chase" style="display: none;"><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div><div class="sk-chase-dot"></div></div>
-    </div>
-</div>
-
-
-
-        
+    <!--Guardado de las búsquedas-->
                 <div class="mb-3">
                     <button class="btn btn-primary" id="saveMetricRunBtn">Save Metrics Run</button>
                 </div>
+
+                <div id="mensajeGuardado" style="display: none;"><p>Metrics saved!</p></div>
+                <div id="errorMsg" style="display: none;"><p>Error !</p></div>
             </form>
         </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -141,12 +190,43 @@
                     var resultadosContainer = $('#resultados-container');
     
                     //resultadosContainer.empty();
-                    $('#url-box .metric-score').text(url);
-                    $('#accessibility-box .metric-score').text(categories['accessibility'].score);
-                    $('#best-practices-box .metric-score').text(categories['best-practices'].score);
-                    $('#performance-box .metric-score').text(categories['performance'].score);
-                    $('#pwa-box .metric-score').text(categories['pwa'].score);
-                    $('#seo-box .metric-score').text(categories['seo'].score);
+
+                    if(url != '')
+                    {
+                        $('#url-box .metric-score').text(url);
+                    }else{
+                        $('#url-box .metric-score').text("No data found");
+                    }
+                    if (categories['accessibility'])
+                    {
+                        $('#accessibility-box .metric-score').text(categories['accessibility'].score);                           
+                    }else{
+                        $('#accessibility-box .metric-score').text("No data found");
+                    }
+                    if (categories['performance'])
+                    {
+                        $('#performance-box .metric-score').text(categories['performance'].score);
+                    }else{
+                        $('#performance-box .metric-score').text("No data found")
+                    }
+                    if (categories['best-practices'])
+                    {                           
+                        $('#best-practices-box .metric-score').text(categories['best-practices'].score);
+                    }else{
+                        $('#best-practices-box .metric-score').text("No data found");
+                    }
+                    if (categories['pwa'])
+                    {   
+                        $('#pwa-box .metric-score').text(categories['pwa'].score);
+                    }else{
+                        $('#pwa-box .metric-score').text("No data found");
+                    }
+                    if (categories['seo'])
+                    {   
+                        $('#seo-box .metric-score').text(categories['seo'].score);
+                    }else{
+                        $('#seo-box .metric-score').text("No data found");
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
@@ -155,38 +235,47 @@
         });
     
         $('#saveMetricRunBtn').click(function() {
-            var url = $('#url').val();
-            var strategy_id = $('#strategies').val();
-            var categories = [];
-            var scores = [];
-            $('#loader').hide();
-            // Obtener los datos de cada categoría y su score
-            $('.category-result').each(function() {
-                var category = $(this).find('p:first').text().split(': ')[1];
-                var score = $(this).find('p:last').text().split(': ')[1];
-    
-                categories.push(category);
-                scores.push(score);
-            });
-    
-            // Realizar la solicitud AJAX para guardar los datos en la base de datos
-            $.ajax({
-                type: 'POST',
-                url: '{{ route('store-metrics') }}',
-                data: {
-                    '_token': '{{ csrf_token() }}',
-                    'url': url,
-                    'strategy_id': strategy_id,
-                    'categories': categories,
-                    'scores': scores
-                },
-                success: function(response) {
-                    console.log(response.message);
-                    // Manejar la respuesta del servidor si es necesario
+        var url = $('#url-box .metric-score').text();
+        var strategy_id = $('#strategies').val();
+
+        // Obtener los puntajes de las categorías
+        var accessibility = $('#accessibility-box .metric-score').text();
+        var bestPractices = $('#best-practices-box .metric-score').text();
+        var performance = $('#performance-box .metric-score').text();
+        var pwa = $('#pwa-box .metric-score').text();
+        var seo = $('#seo-box .metric-score').text();
+
+        // Crear un objeto con los puntajes de las categorías
+        var categories = {
+            'Accessibility': accessibility,
+            'Best Practices': bestPractices,
+            'Performance': performance,
+            'PWA': pwa,
+            'SEO': seo
+        };
+        // Realizar la solicitud AJAX para guardar los datos en la base de datos
+        $.ajax({
+            type: 'POST',
+            url: '{{ route('store-metrics') }}',
+            data: {
+                '_token': '{{ csrf_token() }}',
+                'url': url,
+                'strategy_id': strategy_id,
+                'categories': categories // Pasar el objeto de categorías actualizado
+            },
+            success: function(response) {
+                $('#mensajeGuardado').show();
+
+                setTimeout(function() {
+                        $('#mensajeGuardado').hide();
+                    }, 2000);
                 },
                 error: function(xhr, status, error) {
-                    console.error(error);
-                    // Manejar errores aquí
+                    $('#errorMsg').show();
+
+                        setTimeout(function() {
+                        $('#errorMsg').hide();
+                    }, 2000);
                 }
             });
         });

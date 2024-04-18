@@ -1,18 +1,90 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
 @import '../../node_modules/spinkit/spinkit.css';
 
+/* Estilos generales */
 .loader {
-    border: 8px solid #f3f3f3; /* Light grey */
-    border-top: 8px solid #3498db; /* Blue */
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 2s linear infinite;
-    display: none; /* Ocultar el indicador inicialmente */
+  border: 8px solid #f3f3f3;
+  /* Light grey */
+  border-top: 8px solid #3498db;
+  /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  display: none;
+  /* Ocultar el indicador inicialmente */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+
+  100% {
+    transform: rotate(360deg);
   }
-  
+}
+
+.metric-box {
+  text-align: center;
+  border: 2px solid #333;
+  border-radius: 10px;
+  width: 200px;
+}
+
+.metric-score {
+  margin-top: 10px;
+}
+
+#resultados-container {
+  margin-bottom: 20px;
+}
+
+#saveMetricRunBtn {
+  margin-top: 20px;
+}
+
+.table th,
+.table td {
+  font-size: 1rem;
+}
+
+/* Responsividad para tablet */
+@media screen and (max-width: 768px) {
+  .metric-box {
+    width: 150px;
+  }
+
+  .metric-box h5 {
+    font-size: 1rem;
+  }
+
+  .metric-score {
+    font-size: 0.875rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.600rem;
+  }
+}
+
+/* Responsividad para smartphones */
+@media screen and (max-width: 576px) {
+  .metric-box {
+    width: 100px;
+  }
+
+  .metric-box h5 {
+    font-size: 0.875rem;
+  }
+
+  .metric-score {
+    font-size: 0.50rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 0.40rem;
+  }
+}
