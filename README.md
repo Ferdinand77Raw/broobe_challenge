@@ -1,5 +1,3 @@
-Broobe challenge
-
 Recordar hacer php artisan:migrate ,
 Recordar hacer artisan db:seed --class=CategorySeeder,
 Recordar hacer artisan db:seed --class=StrategySeeder,
